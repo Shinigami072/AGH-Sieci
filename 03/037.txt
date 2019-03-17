@@ -1,0 +1,57 @@
+--037
+
+--wybór interfejsu do konfiguracji
+Router(config)#interface serial 0/0
+Router(config-if)#
+
+
+--wybór rodzaj enkapsulacji stosowanej w łączu Serial (PPP albo HDLC ale w obu interfejsach musi być ten sam)
+Router(config-if)#encapsulation HDLC
+
+-- zdefiniowanie adres IP interfejsu i włącznie intefejsu
+Router(config-if)#ip address 200.200.200.1 255.255.255.0
+Router(config-if)#no shutdown
+
+*W przypadku rutera posiadającego interfejs serial DCE naleŜy określić prędkość
+taktowania łącza, np.:
+Router(config-if)#clock rate 250000
+
+
+--sprawdzenie ustawień łącza
+Router#show ip int serial 0/0
+Router#show run
+Router#show controllers serial 0/0 
+
+--W ruterze, który będzie akceptował połączenia serial i wymagał autoryzacji,
+zdefiniuj użytkownika z hasłem
+Router1(config)#username uzytkownik password haslo
+
+-- konfiguracja wymuszająca logowania PAP
+Router1(config)#int serial 0/0
+Router1(config-if)#PPP authentication PAP
+
+-- włączenie śledzenie PAP
+Router#debug PPP authentication
+
+-- wyłączenie śledzenie PAP
+Router#no debug PPP authentication
+
+--definicja nazwy hostname w ruterze
+Router1(config)#hostname nazwa_rutera
+
+--definicja użytkownika w ruterze
+R1(config)#username nazwa_rutera password haslo
+
+--konfiguracja wymuszająca logowanie challenge handshake 
+R1(config-if)#PPP authentication CHAP
+
+--włączenie śledzenia CHAP
+Router#debug PPP authentication
+
+
+--wyłączenie śledzenia CHAP
+Router#no debug PPP authentication
+
+
+
+
