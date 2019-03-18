@@ -53,5 +53,69 @@ Router#debug PPP authentication
 Router#no debug PPP authentication
 
 
+--konfiguracja wirtualnego interfejsu typu multilink z nadaniem mu
+wybranego numeru
+R1(config)#interface multilink 1
 
+-określenie adresów IP interfejsów multilink
+R1(config-if)#ip address 200.200.205.1 255.255.255.0 
+
+--konfiguracja i przypisanie do multilink (o wybranym wcześniej
+numerze) poszczególne fizyczne interfejsy serial
+Router(config)#int serial 0/3/0
+Router(config-if)#encapsulation ppp
+Router(config-if)#ppp multilink
+Router(config-if)#ppp multilink group 1
+Router(config-if) clock rate 1000000
+Router(config-if)# no shut
+
+--sprawdzenie stanu łącza Multilink PPP
+Router#show ppp multilink
+Router#debug ppp multilink events 
+
+--tryb diagnostyki pakietów przesyłanych przez interfejs multilink
+R1#debug ppp multilink fragments 
+
+--konfiguracja linii konsoli w ruterze
+Router(config)#line aux 0
+Router(config-line)#modem InOut
+Router(config-line)#transport input all
+Router(config-line)#flowcontrol hardware 
+
+
+--sprawdzenie numeru linii przypadającego dla linii AUX 0
+Router#show line
+
+--konfiguracja interfejsu Async rutera
+Router(config)#interface Async 65
+Router(config-if)#ip address 200.200.200.1 255.255.255.0
+Router(config-if)#encapsulation ppp
+Router(config-if)#async default routing
+Router(config-if)#async mode dedicated 
+
+--Łącze HSSI (High Speed Serial Interface) w ruterach Cisco - konfiguracja interfejsów w ruterach
+Router1(config)#int hssi 1/0
+Router1(config-if)# hssi internal-clock
+Router1(config-if)#ip address 200.200.200.1 255.255.255.0
+Router1(config-if)#no sh
+
+
+--włączenie trybu DCE dla łącza HSSI
+Router1(config-if)#hssi dce 
+
+--wybranie połączenia synchronicznego w ruterze
+Router(config-if)#physical-layer sync 
+
+--wybranie połączenia asynchronicznego w ruterze
+Router(config-if)#physical-layer async 
+
+--wymuszenie uzytkownanie linii tylko w trybie async
+Router(config-if)# async mode dedicated
+
+--zezwolenie na rutowanie dynamiczne z użyciem interfejsu Async
+Router(config-if)#async default routing
+
+
+-zmiana prędkości w ruterze
+Router(config-line)#speed 38400
 
