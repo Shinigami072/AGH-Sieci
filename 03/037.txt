@@ -110,7 +110,7 @@ Router(config-if)#physical-layer sync
 Router(config-if)#physical-layer async 
 
 --wymuszenie uzytkownanie linii tylko w trybie async
-Router(config-if)# async mode dedicated
+Router(config-if)# async mode  dedicated
 
 --zezwolenie na rutowanie dynamiczne z użyciem interfejsu Async
 Router(config-if)#async default routing
