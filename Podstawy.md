@@ -1,24 +1,25 @@
 Warstwa 1 - jak to dziadostwo połączyć
-Urządzenia z tej samej wartwy - z  przeplotem
+Urządzenia z tej samej warstwy - z  przeplotem
 urządzenia z różnych warstw - bez przeplotu
 
-Specjalny niebiski kabelek do konsoli - z tym co konfigurujemy
+Specjalny niebieski kabelek do konsoli - z tym co konfigurujemy
 
 -------------------------------------------------
 
-PO podłaczeniu konsola powinna wyglądać tak
+PO podłączeniu konsola powinna wyglądać tak
 ```
 
 ```
-należy parę razy walnąc enter - gdy zapyta się o konfigurację odp. nie
+należy parę razy walnąć enter - gdy zapyta się o konfigurację odp. nie
 
-wszystkie komendy można skrócic do minimanlego rozpoznawalnego ciągu znaków
+wszystkie komendy można skrócić do minimalnego rozpoznawalnego ciągu znaków
 tab uzupełnia
 
 
-|komenda | corobi|
+|komenda | co robi|
 |--------|-------|
-|`enable` | aktywuje tryb uprziwilejowany|
-|`configure terminal`| akwtywuje tryb konfiguracji|
+|`enable` | aktywuje tryb uprzywilejowany|
+|`configure terminal`| aktywuje tryb konfiguracji|
 |`show`| pokazuje status różnych rzeczy see Show |
+
 
